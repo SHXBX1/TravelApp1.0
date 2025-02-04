@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(textTheme: GoogleFonts.lexendTextTheme()),
       title: 'My Travel 1.0',
-      home: HomeScreen(),
+      home: const HomeScreen(),
     );
   }
 }
