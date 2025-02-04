@@ -1,11 +1,12 @@
-import 'dart:async';
+//import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
-import 'package:mytravel/constants/colors.dart';
+//import 'package:mytravel/constants/colors.dart';
 import 'package:mytravel/models/data.dart';
 import 'package:mytravel/widgets/destination.dart';
 
 import '../widgets/Profile.dart';
+import '../widgets/icontap.dart';
 import '../widgets/search.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -43,8 +44,11 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              //row 3
-
+              //row 4
+              const IconTap(),
+              const SizedBox(
+                height: 20,
+              ),
               //Row5
               const Row(
                 children: [
