@@ -48,7 +48,7 @@ class OnboardingScreen extends StatelessWidget {
 
   Future<void> goToHome(BuildContext context) async {
     final prefer = await SharedPreferences.getInstance();
-    await prefer.setBool("ON_BOARDING",true);
+    await prefer.setBool("ON_BOARDING",false);
 
     Navigator.of(context).pushReplacement(
       MaterialPageRoute(builder: (_) => const HomeScreen()),
