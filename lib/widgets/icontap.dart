@@ -14,31 +14,31 @@ class IconTap extends StatelessWidget {
       children: [
         Iconwidget(
             title: 'forest',
-            color: Colors.lightGreenAccent,
+            color: Colors.green,
             icon: Icons.forest),
         SizedBox(
           width: 15,
         ),
         Iconwidget(
-            title: 'camping', color: Colors.greenAccent, icon: Icons.campaign),
+            title: 'camping', color: Colors.lightGreen, icon: Icons.campaign),
         SizedBox(
           width: 15,
         ),
         Iconwidget(
             title: 'Boat trip',
-            color: Colors.lightGreenAccent,
+            color: Colors.green,
             icon: Icons.trip_origin),
         SizedBox(
           width: 15,
         ),
         Iconwidget(
-            title: 'Hiking', color: Colors.greenAccent, icon: Icons.compress),
+            title: 'Hiking', color: Colors.lightGreen, icon: Icons.compress),
         SizedBox(
           width: 15,
         ),
         Iconwidget(
             title: 'World tour',
-            color: Colors.lightGreenAccent,
+            color: Colors.green,
             icon: Icons.tour),
       ],
     );

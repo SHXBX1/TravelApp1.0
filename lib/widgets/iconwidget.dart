@@ -27,7 +27,7 @@ class Iconwidget extends StatelessWidget {
           child: Icon(
             icon,
             size: 30,
-            color: Colors.green,
+            color: Colors.white,
           ),
         ),
         const SizedBox(
