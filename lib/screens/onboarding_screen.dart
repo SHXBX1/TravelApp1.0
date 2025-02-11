@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
-import 'package:mytravel/screens/home_screen.dart';
+import 'home_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({super.key});
@@ -8,42 +9,47 @@ class OnboardingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: IntroductionScreen(
-        pages: [
-          PageViewModel(
-            title: "Welcome",
-            body: "Explore the amazing features of our app.",
-            image: buildImage('assets/images/onboarding3.png'),
-            decoration: getPageDecoration(),
-          ),
-          PageViewModel(
-            title: "Easy Navigation",
-            body: "Navigate easily and efficiently.",
-            image: buildImage('assets/images/onboarding2.png'),
-            decoration: getPageDecoration(),
-          ),
-          PageViewModel(
-            title: "Get Started",
-            body: "Sign up and start using the app now.",
-            image: buildImage('assets/images/onboarding1.png'),
-            decoration: getPageDecoration(),
-            footer: ElevatedButton(
-              onPressed: () => goToHome(context),
-              child: const Text("Start Now"),
+      body: Center(
+        child: IntroductionScreen(
+          pages: [
+            PageViewModel(
+              title: "Welcome to Our App!",
+              body: "Easily manage your tasks and achieve your goals with our app.",
+              image: buildImage('assets/images/onboarding3.png'),
+              decoration: getPageDecoration(),
             ),
-          ),
-        ],
-        done: const Text("Done", style: TextStyle(fontWeight: FontWeight.w600)),
-        onDone: () => goToHome(context),
-        showSkipButton: true,
-        skip: const Text("Skip"),
-        next: const Icon(Icons.arrow_forward),
-        dotsDecorator: getDotsDecorator(),
+            PageViewModel(
+              title: "Explore Features",
+              body: "Track your progress and access everything you need in just a few taps.",
+              image: buildImage('assets/images/onboarding2.png'),
+              decoration: getPageDecoration(),
+            ),
+            PageViewModel(
+              title: "Let’s Get Started!",
+              body: "Sign up and begin your journey with us!",
+              image: buildImage('assets/images/onboarding1.png'),
+              decoration: getPageDecoration(),
+              footer: ElevatedButton(
+                onPressed: () => goToHome(context),
+                child: const Text("Start Now"),
+              ),
+            ),
+          ],
+          done: const Text("Done", style: TextStyle(fontWeight: FontWeight.w600)),
+          onDone: () => goToHome(context),
+          showSkipButton: true,
+          skip: const Text("Skip"),
+          next: const Icon(Icons.arrow_forward),
+          dotsDecorator: getDotsDecorator(),
+        ),
       ),
     );
   }
 
-  void goToHome(BuildContext context) {
+  Future<void> goToHome(BuildContext context) async {
+    final prefer = await SharedPreferences.getInstance();
+    await prefer.setBool("ON_BOARDING",true);
+
     Navigator.of(context).pushReplacement(
       MaterialPageRoute(builder: (_) => const HomeScreen()),
     );
