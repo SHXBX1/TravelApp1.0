@@ -12,9 +12,35 @@ class SignInScreen extends StatelessWidget {
 
   void signInWithEmailAndPassword(BuildContext context) {
     // เพิ่มตรรกะการลงชื่อเข้าใช้ที่นี่
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => const HomeScreen()),
+    String email = emailController.text;
+    String password = passwordController.text;
+    if (email.isEmpty || password.isEmpty) {
+      _showErrorDialog(context, "Please fill Email and Password.");
+      return;
+    } else
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const HomeScreen()),
+      );
+  }
+
+  void _showErrorDialog(BuildContext context, String message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Error'),
+          content: Text(message),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
     );
   }
 
@@ -40,7 +66,6 @@ class SignInScreen extends StatelessWidget {
               ),
             ),
             SizedBox(height: 10),
-
             Text(
               "กรุณาลงชื่อเข้าใช้ด้วยอีเมลและรหัสผ่านของคุณ",
               textAlign: TextAlign.center,
@@ -53,7 +78,6 @@ class SignInScreen extends StatelessWidget {
               ),
             ),
             SizedBox(height: 20),
-
             MyTextField(
               controller: emailController,
               labelText: "อีเมล",
@@ -61,7 +85,6 @@ class SignInScreen extends StatelessWidget {
               hintText: "ป้อนอีเมลของคุณ.",
             ),
             SizedBox(height: 20),
-
             MyTextField(
               controller: passwordController,
               labelText: "รหัสผ่าน",
@@ -69,7 +92,6 @@ class SignInScreen extends StatelessWidget {
               hintText: "ป้อนรหัสผ่านของคุณ.",
             ),
             SizedBox(height: 20),
-
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
               child: Row(
@@ -92,13 +114,11 @@ class SignInScreen extends StatelessWidget {
               ),
             ),
             SizedBox(height: 20),
-
             MyButton(
               onTap: () => signInWithEmailAndPassword(context),
               hinText: "ลงชื่อเข้าใช้",
             ),
             SizedBox(height: 40),
-
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
               child: Row(
@@ -126,7 +146,6 @@ class SignInScreen extends StatelessWidget {
               ),
             ),
             SizedBox(height: 20),
-
             const Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -136,7 +155,6 @@ class SignInScreen extends StatelessWidget {
               ],
             ),
             SizedBox(height: 30),
-
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
