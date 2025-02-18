@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-
 class MyIconButton extends StatelessWidget {
   const MyIconButton({
     super.key,
     required this.imagPath,
   });
+
   final String imagPath;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -13,7 +14,7 @@ class MyIconButton extends StatelessWidget {
       decoration: BoxDecoration(
         border: Border.all(color: Colors.white),
         borderRadius: BorderRadius.circular(16),
-        color: Colors.grey.shade600,
+        color: Colors.blue.shade400, // สีฟ้าผสม
       ),
       child: Image.asset(
         imagPath,

@@ -10,30 +10,22 @@ class SignUpScreen extends StatelessWidget {
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController repasswordController = TextEditingController();
 
-  // Function to handle user sign-up
   void createUserWithEmailAndPassword(BuildContext context) {
     String fullname = fullnameController.text;
     String email = emailController.text;
     String password = passwordController.text;
     String repassword = repasswordController.text;
 
-    // Check if all fields are filled
     if (fullname.isEmpty || email.isEmpty || password.isEmpty || repassword.isEmpty) {
       _showErrorDialog(context, "Please fill in all fields.");
       return;
     }
 
-    // Check if password and re-entered password match
     if (password != repassword) {
       _showErrorDialog(context, "Passwords do not match.");
       return;
     }
 
-    // Your sign-up logic here
-    // Example: You can create a user with email and password
-    // FirebaseAuth.instance.createUserWithEmailAndPassword(email, password);
-
-    // On successful sign-up, navigate to the sign-in screen
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -42,7 +34,6 @@ class SignUpScreen extends StatelessWidget {
     );
   }
 
-  // Helper function to show an error dialog
   void _showErrorDialog(BuildContext context, String message) {
     showDialog(
       context: context,
@@ -66,92 +57,89 @@ class SignUpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blue.shade50, // สีพื้นหลังฟ้าอ่อนเหมือน SignInScreen
       body: Padding(
         padding: const EdgeInsets.all(25.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            // Welcome Text
             Text(
-              "Welcome to our community.",
+              "ยินดีต้อนรับสู่ชุมชนของเรา",
               textAlign: TextAlign.center,
               style: GoogleFonts.lato(
                 textStyle: Theme.of(context).textTheme.displayLarge,
                 fontSize: 24,
                 fontWeight: FontWeight.w700,
                 fontStyle: FontStyle.normal,
+                color: Colors.blue.shade800, // สีฟ้าเข้มสำหรับข้อความ
               ),
             ),
             SizedBox(height: 10),
 
-            // Info Text
             Text(
-              "\nTo get started, please provide your information and create an account.\n",
+              "กรุณาระบุข้อมูลของคุณและสร้างบัญชี",
               textAlign: TextAlign.center,
               style: GoogleFonts.lato(
                 textStyle: Theme.of(context).textTheme.displaySmall,
                 fontSize: 16,
                 fontWeight: FontWeight.w500,
                 fontStyle: FontStyle.italic,
+                color: Colors.blue.shade600, // สีฟ้าปานกลาง
               ),
             ),
             SizedBox(height: 20),
 
-            // Full name TextField
             MyTextField(
               controller: fullnameController,
-              labelText: "Name",
+              labelText: "ชื่อ",
               obscureText: false,
-              hintText: "Enter your name.",
+              hintText: "ใส่ชื่อของคุณ.",
             ),
             SizedBox(height: 20),
 
-            // Email TextField
             MyTextField(
               controller: emailController,
-              labelText: "Email",
+              labelText: "อีเมล",
               obscureText: false,
-              hintText: "Enter your email.",
+              hintText: "ใส่อีเมลของคุณ.",
             ),
             SizedBox(height: 20),
 
-            // Password TextField
             MyTextField(
               controller: passwordController,
-              labelText: "Password",
+              labelText: "รหัสผ่าน",
               obscureText: true,
-              hintText: "Enter your password.",
+              hintText: "ใส่รหัสผ่านของคุณ.",
             ),
             SizedBox(height: 20),
 
-            // Re-enter Password TextField
             MyTextField(
               controller: repasswordController,
-              labelText: "Re-password",
+              labelText: "ใส่รหัสผ่านอีกครั้ง",
               obscureText: true,
-              hintText: "Enter your password again.",
+              hintText: "ใส่รหัสผ่านของคุณอีกครั้ง.",
             ),
             SizedBox(height: 20),
 
-            // Sign-up Button
             MyButton(
               onTap: () => createUserWithEmailAndPassword(context),
-              hinText: "Sign up",
+              hinText: "สมัครสมาชิก",
+              buttonColor: Colors.blue.shade600, // สีปุ่มเหมือนกับ SignInScreen
             ),
             SizedBox(height: 20),
 
-            // Have a member? Row
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'Have a member?',
+                  'มีสมาชิกหรือไม่?',
                   style: GoogleFonts.lato(
                     textStyle: Theme.of(context).textTheme.displaySmall,
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
                     fontStyle: FontStyle.italic,
+                    color: Colors.blue.shade600, // สีฟ้าปานกลาง
                   ),
                 ),
                 SizedBox(width: 8),
@@ -165,13 +153,13 @@ class SignUpScreen extends StatelessWidget {
                     );
                   },
                   child: Text(
-                    'Sign in.',
+                    'ลงชื่อเข้าใช้',
                     style: GoogleFonts.lato(
                       textStyle: Theme.of(context).textTheme.displaySmall,
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
                       fontStyle: FontStyle.italic,
-                      color: Colors.blue,
+                      color: Colors.blue.shade700, // สีฟ้าสำหรับปุ่ม
                     ),
                   ),
                 ),

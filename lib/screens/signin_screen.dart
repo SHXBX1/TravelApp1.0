@@ -3,71 +3,73 @@ import 'package:google_fonts/google_fonts.dart';
 import '../widgets/my_botton.dart';
 import '../widgets/my_iconbtn.dart';
 import '../widgets/my_textfield.dart';
+import 'home_screen.dart';
 import 'signup_screen.dart';
 
 class SignInScreen extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
-  // Function for signing in
-  void signInWithEmailAndPassword() {
-    // Your sign-in logic here
+  void signInWithEmailAndPassword(BuildContext context) {
+    // เพิ่มตรรกะการลงชื่อเข้าใช้ที่นี่
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => const HomeScreen()),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blue.shade50, // พื้นหลังสีฟ้าอ่อน
       body: Padding(
         padding: const EdgeInsets.all(25.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            // Welcome text
             Text(
-              "Hello, ready to get started?",
+              "สวัสดี พร้อมที่จะเริ่มต้นหรือยัง?",
               textAlign: TextAlign.center,
               style: GoogleFonts.lato(
                 textStyle: Theme.of(context).textTheme.displayLarge,
                 fontSize: 24,
                 fontWeight: FontWeight.w700,
                 fontStyle: FontStyle.normal,
+                color: Colors.blue.shade800, // สีฟ้าเข้มสำหรับข้อความ
               ),
             ),
             SizedBox(height: 10),
 
-            // Sign-in prompt text
             Text(
-              "Please sign in with your email and password.",
+              "กรุณาลงชื่อเข้าใช้ด้วยอีเมลและรหัสผ่านของคุณ",
               textAlign: TextAlign.center,
               style: GoogleFonts.lato(
                 textStyle: Theme.of(context).textTheme.displaySmall,
                 fontSize: 16,
                 fontWeight: FontWeight.w300,
                 fontStyle: FontStyle.italic,
+                color: Colors.blue.shade600, // สีฟ้าปานกลาง
               ),
             ),
             SizedBox(height: 20),
 
-            // Email input field
             MyTextField(
               controller: emailController,
-              labelText: "Email",
+              labelText: "อีเมล",
               obscureText: false,
-              hintText: "Enter your email.",
+              hintText: "ป้อนอีเมลของคุณ.",
             ),
             SizedBox(height: 20),
 
-            // Password input field
             MyTextField(
               controller: passwordController,
-              labelText: "Password",
+              labelText: "รหัสผ่าน",
               obscureText: true,
-              hintText: "Enter your password.",
+              hintText: "ป้อนรหัสผ่านของคุณ.",
             ),
             SizedBox(height: 20),
 
-            // Forgot password text button
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
               child: Row(
@@ -76,7 +78,7 @@ class SignInScreen extends StatelessWidget {
                   TextButton(
                     onPressed: () {},
                     child: Text(
-                      'Forgot Password?',
+                      'ลืมรหัสผ่านใช่ไหม?',
                       style: GoogleFonts.lato(
                         textStyle: Theme.of(context).textTheme.displaySmall,
                         fontSize: 16,
@@ -91,14 +93,12 @@ class SignInScreen extends StatelessWidget {
             ),
             SizedBox(height: 20),
 
-            // Sign-in button
             MyButton(
-              onTap: signInWithEmailAndPassword,
-              hinText: "Sign In",
+              onTap: () => signInWithEmailAndPassword(context),
+              hinText: "ลงชื่อเข้าใช้",
             ),
             SizedBox(height: 40),
 
-            // Google and Apple sign-in buttons
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
               child: Row(
@@ -112,7 +112,7 @@ class SignInScreen extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     child: Text(
-                      'Or continue with',
+                      'หรือดำเนินการต่อด้วย',
                       style: TextStyle(color: Colors.grey.shade800),
                     ),
                   ),
@@ -127,7 +127,6 @@ class SignInScreen extends StatelessWidget {
             ),
             SizedBox(height: 20),
 
-            // Social login buttons (Google, Apple)
             const Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -138,12 +137,11 @@ class SignInScreen extends StatelessWidget {
             ),
             SizedBox(height: 30),
 
-            // Not a member text and sign-up button
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'Not a member?',
+                  'ไม่ใช่สมาชิก?',
                   style: GoogleFonts.lato(
                     textStyle: Theme.of(context).textTheme.displaySmall,
                     fontSize: 16,
@@ -162,13 +160,13 @@ class SignInScreen extends StatelessWidget {
                     );
                   },
                   child: Text(
-                    'Register now.',
+                    'ลงทะเบียนทันที',
                     style: GoogleFonts.lato(
                       textStyle: Theme.of(context).textTheme.displaySmall,
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
                       fontStyle: FontStyle.italic,
-                      color: Colors.blue,
+                      color: Colors.blue.shade700, // สีฟ้าสำหรับปุ่ม
                     ),
                   ),
                 ),

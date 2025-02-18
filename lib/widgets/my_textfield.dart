@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-
-class MyTextField extends StatelessWidget {
+import 'package:flutter/material.dart';class MyTextField extends StatelessWidget {
   const MyTextField({
     super.key,
     required this.controller,
@@ -28,12 +26,12 @@ class MyTextField extends StatelessWidget {
           contentPadding: const EdgeInsets.symmetric(horizontal: 42, vertical: 20),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
-            borderSide: const BorderSide(color: Colors.grey),
+            borderSide: const BorderSide(color: Color(0xFF0077B6)), // สีฟ้าเข้ม
             gapPadding: 10,
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
-            borderSide: const BorderSide(color: Colors.blue),
+            borderSide: const BorderSide(color: Color(0xFF005F80)), // สีฟ้าสด
             gapPadding: 10,
           ),
         ),
@@ -41,3 +39,5 @@ class MyTextField extends StatelessWidget {
     );
   }
 }
+
+

@@ -1,38 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class MyButton extends StatelessWidget {
+  final String hinText;
+  final VoidCallback onTap;
+  final Color buttonColor; // เพิ่ม parameter สำหรับสีปุ่ม
+
   const MyButton({
-    super.key,
-    required this.onTap,
+    Key? key,
     required this.hinText,
-  });
-  final Function()? onTap;
-  final hinText;
+    required this.onTap,
+    this.buttonColor = Colors.blue, // กำหนดค่าเริ่มต้นให้เป็นสีน้ำเงิน
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: const EdgeInsets.all(25.0),
-        margin: const EdgeInsetsDirectional.symmetric(horizontal: 25.0),
+        width: double.infinity,
+        padding: const EdgeInsets.symmetric(vertical: 16.0),
+        alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: Colors.blue,
+          color: buttonColor, // ใช้ parameter buttonColor
           borderRadius: BorderRadius.circular(8.0),
         ),
-        child: Center(
-          child: Text(
-            hinText,
-            style: GoogleFonts.lato(
-              textStyle: Theme.of(context).textTheme.titleLarge,
-              fontSize: 20,
-              fontWeight: FontWeight.w700,
-              fontStyle: FontStyle.normal,
-              color: Colors.white,
-            ),
+        child: Text(
+          hinText,
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 18.0,
+            fontWeight: FontWeight.bold,
           ),
         ),
       ),
     );
   }
-} //Widget
+}
