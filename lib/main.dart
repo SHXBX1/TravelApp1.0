@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(textTheme: GoogleFonts.lexendTextTheme()),
       title: 'My Travel 1.0',
-      home: show ? const OnboardingScreen() :  SignInScreen(),  // Add parentheses here
+      home: show ? const OnboardingScreen() :  HomeScreen(),  // Add parentheses here
     );
   }
 }
